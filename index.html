@@ -4,13 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zero Hunger Connection | Eradicating Food Waste</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="Bridging the gap between surplus food and empty plates. Join our mission to eliminate food waste and eradicate hunger in our communities.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <!-- HEADER -->
-  <header class="header">
+  <header class="header" id="main-header">
     <div class="container header-inner">
       <a href="#" class="logo">
         <span class="logo-icon">🌿</span>
@@ -19,54 +22,97 @@
       
       <nav class="nav">
         <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About Us</a>
+        <a href="#about" class="nav-link">About</a>
         <a href="#how-it-works" class="nav-link">How It Works</a>
-        <a href="#impact" class="nav-link">Our Impact</a>
+        <a href="#impact" class="nav-link">Impact</a>
       </nav>
 
       <div class="header-actions">
-        <a href="#" class="btn btn-outline">Log In</a>
-        <a href="donor.html" class="btn btn-primary">Donate Now</a>
+        <a href="#" class="btn btn-secondary">Log In</a>
+        <a href="donor.html" class="btn btn-primary">Donate Now →</a>
       </div>
     </div>
   </header>
 
   <!-- HERO SECTION -->
   <section class="hero" id="home">
+    <div class="hero-bg">
+      <div class="hero-orb-1"></div>
+      <div class="hero-orb-2"></div>
+    </div>
     <div class="container hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">Our Mission is Simple</div>
-        <h1 class="hero-title">Bridging the Gap Between Surplus Food and Empty Plates.</h1>
-        <p class="hero-text">Join our mission to eliminate food waste and eradicate hunger in our communities. Every meal saved is a life changed.</p>
+        <div class="hero-eyebrow">
+          <span class="hero-eyebrow-dot"></span>
+          Our Mission is Active &amp; Growing
+        </div>
+        <h1 class="hero-title">
+          Bridging the Gap Between<br>
+          <span class="highlight">Surplus Food</span><br>
+          &amp; Empty Plates.
+        </h1>
+        <p class="hero-text">
+          Join our mission to eliminate food waste and eradicate hunger in our communities. Every meal saved is a life changed — and we need you.
+        </p>
         <div class="hero-buttons">
-          <a href="#" class="btn btn-primary btn-lg">Share Surplus Food</a>
-          <a href="#" class="btn btn-outline btn-lg">Become a Volunteer</a>
+          <a href="#" class="btn btn-primary btn-lg">Share Surplus Food →</a>
+          <a href="#" class="btn btn-secondary btn-lg">Become a Volunteer</a>
+        </div>
+        <div class="hero-trust">
+          <div class="hero-trust-avatars">
+            <span>AK</span>
+            <span>SM</span>
+            <span>RJ</span>
+            <span>PL</span>
+          </div>
+          <div class="hero-trust-text">
+            <strong>1,200+ Active Volunteers</strong>
+            Making a difference every day
+          </div>
         </div>
       </div>
-      <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" alt="Volunteers packing food">
+      <div class="hero-visual">
+        <div class="hero-image-wrap">
+          <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1000&auto=format&fit=crop" alt="Volunteers packing food for distribution">
+          <!-- Floating Card 1 -->
+          <div class="hero-card hero-card-1">
+            <div class="hero-card-icon orange">🍱</div>
+            <div>
+              <div class="hero-card-label">Today's Meals</div>
+              <div class="hero-card-val">2,340 Rescued</div>
+            </div>
+          </div>
+          <!-- Floating Card 2 -->
+          <div class="hero-card hero-card-2">
+            <div class="hero-card-icon green">✅</div>
+            <div>
+              <div class="hero-card-label">Deliveries</div>
+              <div class="hero-card-val">98% On Time</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- IMPACT BAR -->
-  <section class="impact-bar">
-    <div class="container impact-inner">
-      <div class="impact-stat">
-        <h3>50,000+</h3>
-        <p>Meals Rescued</p>
+  <!-- STATS BAR -->
+  <section class="stats-bar" id="impact">
+    <div class="container stats-inner">
+      <div class="stat-item fade-up">
+        <div class="stat-number">50K+</div>
+        <div class="stat-label">Meals Rescued</div>
       </div>
-      <div class="impact-stat">
-        <h3>1,200+</h3>
-        <p>Active Volunteers</p>
+      <div class="stat-item fade-up" style="transition-delay:0.1s">
+        <div class="stat-number">1,200+</div>
+        <div class="stat-label">Active Volunteers</div>
       </div>
-      <div class="impact-stat">
-        <h3>30+</h3>
-        <p>Cities Covered</p>
+      <div class="stat-item fade-up" style="transition-delay:0.2s">
+        <div class="stat-number">30+</div>
+        <div class="stat-label">Cities Covered</div>
       </div>
-      <div class="impact-stat">
-        <h3>250+</h3>
-        <p>Partner Restaurants</p>
+      <div class="stat-item fade-up" style="transition-delay:0.3s">
+        <div class="stat-number">250+</div>
+        <div class="stat-label">Partner Restaurants</div>
       </div>
     </div>
   </section>
@@ -74,47 +120,68 @@
   <!-- ABOUT SECTION -->
   <section class="section about" id="about">
     <div class="container about-inner">
-      <div class="about-image">
-        <img src="https://images.unsplash.com/photo-1593113563332-f144d1889be8?q=80&w=1000&auto=format&fit=crop" alt="Community sharing food">
+      <div class="about-image-wrap fade-up">
+        <img src="https://images.unsplash.com/photo-1593113563332-f144d1889be8?q=80&w=1000&auto=format&fit=crop" alt="Community sharing food together">
+        <div class="about-badge">
+          <div class="about-badge-num">5yr</div>
+          <div class="about-badge-text">Of Impact</div>
+        </div>
       </div>
-      <div class="about-content">
+      <div class="about-content fade-up">
         <span class="section-tagline">About Us</span>
-        <h2 class="section-title">We believe that good food belongs to people, not landfills.</h2>
-        <p class="section-text">Every day, tons of perfectly good food from events, restaurants, and grocery stores goes to waste. At the same time, millions struggle with food insecurity. We exist to fix this broken system by connecting local food surpluses directly with communities and shelters in need.</p>
+        <h2 class="section-title">We believe good food belongs to <span>people, not landfills.</span></h2>
+        <p class="section-text">Every day, tons of perfectly good food from events, restaurants, and grocery stores goes to waste. At the same time, millions struggle with food insecurity. We exist to fix this broken system.</p>
         <ul class="about-list">
-          <li><strong>Zero Waste:</strong> We rescue edible surplus before it is thrown away.</li>
-          <li><strong>Direct Impact:</strong> Food is delivered directly to vetted shelters and NGOs.</li>
-          <li><strong>Community Driven:</strong> Powered by hundreds of local volunteers.</li>
+          <li>
+            <div class="about-list-icon">✓</div>
+            <div>
+              <strong>Zero Waste</strong>
+              We rescue edible surplus before it is thrown away, ensuring nothing goes to landfill.
+            </div>
+          </li>
+          <li>
+            <div class="about-list-icon">✓</div>
+            <div>
+              <strong>Direct Impact</strong>
+              Food is delivered directly to vetted shelters, NGOs, and communities that need it most.
+            </div>
+          </li>
+          <li>
+            <div class="about-list-icon">✓</div>
+            <div>
+              <strong>Community Driven</strong>
+              Powered by hundreds of passionate local volunteers who give their time every day.
+            </div>
+          </li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- HOW IT WORKS -->
-  <section class="section how-it-works bg-light" id="how-it-works">
+  <section class="section how-it-works" id="how-it-works">
     <div class="container">
       <div class="section-header text-center">
         <span class="section-tagline">How It Works</span>
-        <h2 class="section-title">Three easy steps to transform waste into hope.</h2>
-        <p class="section-text">Our streamlined platform makes it simple for anyone to contribute to a hunger-free world.</p>
+        <h2 class="section-title">Three steps to <span>transform waste into hope.</span></h2>
+        <p class="section-text">Our streamlined platform makes it simple for anyone to contribute to a hunger-free world in minutes.</p>
       </div>
-
       <div class="steps-grid">
-        <!-- Step 1 -->
-        <div class="step-card">
-          <div class="step-icon">1</div>
+        <div class="step-card fade-up">
+          <div class="step-number">01</div>
+          <div class="step-icon-wrap">🤝</div>
           <h3 class="step-title">Connect</h3>
-          <p class="step-text">Local restaurants, event organizers, and individuals list their surplus food through our simple platform in minutes.</p>
+          <p class="step-text">Restaurants, event organizers, and individuals list their surplus food through our platform in just minutes.</p>
         </div>
-        <!-- Step 2 -->
-        <div class="step-card">
-          <div class="step-icon">2</div>
+        <div class="step-card fade-up" style="transition-delay:0.15s">
+          <div class="step-number">02</div>
+          <div class="step-icon-wrap">🚗</div>
           <h3 class="step-title">Collect</h3>
-          <p class="step-text">Our trained volunteer network coordinates swift, hygienic pickups, ensuring food safety standards are met every time.</p>
+          <p class="step-text">Our trained volunteer network coordinates swift, hygienic pickups — ensuring food safety standards every time.</p>
         </div>
-        <!-- Step 3 -->
-        <div class="step-card">
-          <div class="step-icon">3</div>
+        <div class="step-card fade-up" style="transition-delay:0.3s">
+          <div class="step-number">03</div>
+          <div class="step-icon-wrap">🏘️</div>
           <h3 class="step-title">Distribute</h3>
           <p class="step-text">Nutritious meals are delivered directly to shelters, food banks, and communities in need across 30+ cities.</p>
         </div>
@@ -122,14 +189,62 @@
     </div>
   </section>
 
+  <!-- TESTIMONIALS -->
+  <section class="section testimonials">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tagline">Testimonials</span>
+        <h2 class="section-title">Voices from our <span>community.</span></h2>
+        <p class="section-text">Real stories from volunteers, donors, and communities who have experienced the difference first-hand.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-up">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"We had 200 portions left over from our corporate event. Within 2 hours, every single plate reached a shelter. The process was incredibly seamless."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">AS</div>
+            <div>
+              <div class="testimonial-name">Aisha Saeed</div>
+              <div class="testimonial-role">Event Coordinator, Karachi</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up" style="transition-delay:0.1s">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"Volunteering here changed my perspective on community. I spend two hours every Saturday and help feed dozens of families. It's the most fulfilling thing I do."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MR</div>
+            <div>
+              <div class="testimonial-name">Muhammad Rafiq</div>
+              <div class="testimonial-role">Volunteer, Lahore</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-up" style="transition-delay:0.2s">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"Our restaurant now has zero food waste at the end of the day. The donation process is fast, and knowing it feeds real families makes us proud to participate."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">FH</div>
+            <div>
+              <div class="testimonial-name">Fatima Hussain</div>
+              <div class="testimonial-role">Restaurant Owner, Islamabad</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA SECTION -->
   <section class="cta-section">
-    <div class="container text-center">
-      <h2 class="cta-title">Ready to make a difference?</h2>
-      <p class="cta-text">Whether you have food to give, time to volunteer, or funds to donate, we need your help.</p>
-      <div class="cta-buttons">
-        <a href="donor.html" class="btn btn-primary btn-lg">Make a Donation</a>
-        <a href="#" class="btn btn-outline-light btn-lg">Join as Volunteer</a>
+    <div class="container">
+      <div class="cta-inner fade-up">
+        <h2 class="cta-title">Ready to make a <span>real difference?</span></h2>
+        <p class="cta-text">Whether you have food to give, time to volunteer, or funds to donate — every contribution counts toward a hunger-free future.</p>
+        <div class="cta-buttons">
+          <a href="donor.html" class="btn btn-primary btn-lg">Make a Donation →</a>
+          <a href="#" class="btn btn-outline-light btn-lg">Join as Volunteer</a>
+        </div>
       </div>
     </div>
   </section>
@@ -144,9 +259,9 @@
         </a>
         <p class="footer-desc">Turning surplus into sustenance — one meal at a time. Built for a better, hunger-free world.</p>
         <div class="social-links">
-          <a href="#">X</a>
-          <a href="#">In</a>
-          <a href="#">Fb</a>
+          <a href="#">𝕏</a>
+          <a href="#">in</a>
+          <a href="#">fb</a>
         </div>
       </div>
       
@@ -168,22 +283,41 @@
 
       <div class="footer-newsletter">
         <h4 class="footer-heading">Stay Updated</h4>
-        <p>Get the latest impact reports and volunteer opportunities.</p>
+        <p>Get the latest impact reports and volunteer opportunities in your area.</p>
         <form class="newsletter-form">
-          <input type="email" placeholder="Email address" required>
-          <button type="submit" class="btn btn-primary">Subscribe</button>
+          <input type="email" placeholder="your@email.com" required>
+          <button type="submit" class="btn btn-primary">Go →</button>
         </form>
       </div>
     </div>
     
     <div class="container footer-bottom">
-      <p>&copy; 2026 Zero Hunger Connection. All rights reserved.</p>
+      <p>© 2026 Zero Hunger Connection. All rights reserved.</p>
       <div class="legal-links">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
       </div>
     </div>
   </footer>
+
+  <script>
+    // Sticky header
+    const header = document.getElementById('main-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
 
 </body>
 </html>
