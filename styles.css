@@ -22,12 +22,12 @@
   --gold-100:  #fef3c7;
 
   --white:     #ffffff;
-  --off-white: #f8fafc;
-  --pearl:     #f1f5f9;
-  --gray-100:  #f0f4f8;
-  --gray-200:  #e2e8f0;
-  --gray-400:  #94a3b8;
-  --gray-600:  #475569;
+  --off-white: #fffdf7; /* Warm cream */
+  --pearl:     #fff7ed; /* Soft peach/orange tint */
+  --gray-100:  #fcecd9; /* Warm sand */
+  --gray-200:  #f3dcb8;
+  --gray-400:  #bca88f;
+  --gray-600:  #6b5a4b;
   --gray-800:  #1e293b;
   --gray-900:  #0f172a;
 
@@ -389,7 +389,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
   display: flex;
   align-items: center;
   padding: 7rem 0 4rem;
-  background: linear-gradient(155deg, var(--white) 0%, var(--green-50) 50%, var(--off-white) 100%);
+  background: linear-gradient(155deg, #fffcf2 0%, #ffedd5 50%, #fef3c7 100%);
   overflow: hidden;
 }
 
@@ -409,7 +409,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 
 .shape--1 {
   width: 500px; height: 500px;
-  background: radial-gradient(circle, var(--green-200), transparent);
+  background: radial-gradient(circle, #fed7aa, transparent); /* Orange/peach glow */
   top: -100px; right: -100px;
 }
 
@@ -421,9 +421,9 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 
 .shape--3 {
   width: 250px; height: 250px;
-  background: radial-gradient(circle, var(--green-300, #6ee7b7), transparent);
+  background: radial-gradient(circle, #fcd34d, transparent); /* Warm gold */
   top: 40%; right: 30%;
-  opacity: 0.15;
+  opacity: 0.2;
 }
 
 .hero__inner {
@@ -760,7 +760,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 /* ═══════════════════════════ HOW IT WORKS ═══════════════════════════ */
 .how-it-works {
   padding: var(--section-py) 0;
-  background: var(--pearl);
+  background: #fffcf2; /* Softest warm cream */
 }
 
 .steps-grid {
@@ -1060,7 +1060,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 /* ═══════════════════════════ VOLUNTEER CTA ═══════════════════════════ */
 .volunteer-cta {
   padding: var(--section-py) 0;
-  background: var(--pearl);
+  background: var(--pearl); 
 }
 
 .volunteer-cta__inner { max-width: 100%; }
@@ -1157,7 +1157,7 @@ h1, h2, h3, h4 { font-family: var(--font-display); line-height: 1.15; color: var
 
 /* ═══════════════════════════ FOOTER ═══════════════════════════ */
 .footer {
-  background: var(--gray-900);
+  background: #3e2723; /* Deep warm chocolate brown like coffee/cocoa */
   color: rgba(255,255,255,0.8);
 }
 
