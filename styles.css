@@ -699,7 +699,7 @@ body::before {
 .steps-grid::before {
   content: '';
   position: absolute;
-  top: 3rem;
+  top: calc(2.5rem + 26px);
   left: calc(16.67% + 24px);
   right: calc(16.67% + 24px);
   height: 1px;
