@@ -166,7 +166,11 @@
         <h2 class="section-title">Three steps to <span>transform waste into hope.</span></h2>
         <p class="section-text">Our streamlined platform makes it simple for anyone to contribute to a hunger-free world in minutes.</p>
       </div>
-      <div class="timeline">
+      <div class="timeline" id="timeline">
+        <div class="timeline-progress-wrap">
+          <div class="timeline-progress-fill" id="timeline-progress"></div>
+        </div>
+
         <!-- Step 01 -->
         <div class="timeline-step">
           <div class="timeline-pill active fade-up">Step 01</div>
@@ -315,7 +319,6 @@
       header.classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Scroll animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -325,6 +328,43 @@
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Timeline scroll animation
+    const timeline = document.getElementById('timeline');
+    const timelineProgress = document.getElementById('timeline-progress');
+    const timelinePills = document.querySelectorAll('.timeline-pill');
+    
+    if(timeline && timelineProgress) {
+      window.addEventListener('scroll', () => {
+        const timelineRect = timeline.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Start filling when timeline enters viewport (offset by half window)
+        // End filling when timeline bottom leaves viewport offset
+        const startVisible = timelineRect.top - windowHeight / 2;
+        const totalHeight = timeline.offsetHeight;
+        
+        let progress = 0;
+        if(startVisible < 0) {
+          // Calculate percentage scrolled past the timeline trigger point
+          progress = (-startVisible / totalHeight) * 100;
+          progress = Math.max(0, Math.min(100, progress));
+        }
+        
+        timelineProgress.style.height = progress + '%';
+
+        // Check active pills based on their specific position relative to the fill
+        timelinePills.forEach(pill => {
+          const pillRect = pill.getBoundingClientRect();
+          const fillBottom = timelineProgress.getBoundingClientRect().bottom;
+          if(pillRect.top + (pillRect.height / 2) <= fillBottom) {
+             pill.classList.add('active');
+          } else {
+             pill.classList.remove('active');
+          }
+        });
+      });
+    }
   </script>
 
 </body>
