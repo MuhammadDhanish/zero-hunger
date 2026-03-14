@@ -696,17 +696,6 @@ body::before {
   z-index: 1;
 }
 
-.steps-grid::before {
-  content: '';
-  position: absolute;
-  top: calc(2.5rem + 26px);
-  left: calc(16.67% + 24px);
-  right: calc(16.67% + 24px);
-  height: 1px;
-  background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary));
-  opacity: 0.3;
-  z-index: 0;
-}
 
 .step-card {
   background: var(--bg-card);
