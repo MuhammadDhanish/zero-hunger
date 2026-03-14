@@ -6,7 +6,6 @@
   <title>Donor Registration | Zero Hunger Connection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap');
 
@@ -61,9 +60,6 @@
       min-height:100vh;
       -webkit-font-smoothing:antialiased;
     }
-
-    /* ── CANVAS ── */
-    #three-canvas{position:fixed;inset:0;z-index:0;width:100%;height:100%;opacity:.15;}
 
     /* ── PAGE WRAPPER ── */
     .page{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column}
@@ -397,9 +393,6 @@
 </head>
 <body>
 
-<!-- ══ THREE.JS CANVAS ══ -->
-<canvas id="three-canvas"></canvas>
-
 <div class="page">
 
   <!-- NAV -->
@@ -691,82 +684,7 @@
   </footer>
 </div>
 
-<!-- ════════════ THREE.JS SCENE ════════════ -->
-<script>
-(function(){
-  const canvas = document.getElementById('three-canvas');
-  const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-  renderer.setSize(window.innerWidth,window.innerHeight);
 
-  const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 200);
-  camera.position.set(0, 0, 22);
-
-  // ── Lighting ──
-  scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-  const dir2 = new THREE.DirectionalLight(0xf59e0b, 1.0);
-  dir2.position.set(-8, -4, 4);
-  scene.add(dir2);
-
-  // ── Torus 2 (gold) ──
-  const torus2Geo = new THREE.TorusGeometry(3.8, 0.1, 12, 120);
-  const torus2Mat = new THREE.MeshStandardMaterial({color:0xf59e0b, roughness:0.3, metalness:0.6, transparent:true, opacity:0.45});
-  const torus2 = new THREE.Mesh(torus2Geo, torus2Mat);
-  torus2.position.set(7,-3,-8);
-  torus2.rotation.x = Math.PI / 1.6;
-  torus2.rotation.z = Math.PI / 4;
-  scene.add(torus2);
-
-  // ── Small Octahedra (Gold) ──
-  const octGeo = new THREE.OctahedronGeometry(0.5);
-  const octMat = new THREE.MeshStandardMaterial({color:0xfbbf24, roughness:0.3, metalness:0.7, transparent:true, opacity:0.6});
-  const octs = [];
-  [[-6,4,-3],[8,5,-5],[-9,-4,-6],[5,-6,-3],[2,7,-4]].forEach(([x,y,z])=>{
-    const o = new THREE.Mesh(octGeo, octMat.clone());
-    o.position.set(x,y,z);
-    octs.push({mesh:o, speed:0.008+Math.random()*0.01, phase:Math.random()*Math.PI*2});
-    scene.add(o);
-  });
-
-  // ── Animation ──
-  let mouseX=0, mouseY=0;
-  window.addEventListener('mousemove',e=>{
-    mouseX = (e.clientX/window.innerWidth - 0.5)*2;
-    mouseY = (e.clientY/window.innerHeight - 0.5)*2;
-  });
-
-  let t = 0;
-  function animate(){
-    requestAnimationFrame(animate);
-    t += 0.01;
-
-    // Slow rotation
-    torus2.rotation.y += 0.004;
-
-    // Camera subtle follow mouse
-    camera.position.x += (mouseX * 1.5 - camera.position.x) * 0.03;
-    camera.position.y += (-mouseY * 1.0 - camera.position.y) * 0.03;
-    camera.lookAt(0, 0, 0);
-
-    // Floating octs
-    octs.forEach(({mesh,speed,phase})=>{
-      mesh.rotation.x += speed;
-      mesh.rotation.z += speed*0.7;
-      mesh.position.y += Math.cos(t*0.8 + phase)*0.006;
-    });
-
-    renderer.render(scene, camera);
-  }
-  animate();
-
-  window.addEventListener('resize',()=>{
-    camera.aspect = window.innerWidth/window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-})();
-</script>
 
 <!-- ════════════ FORM LOGIC ════════════ -->
 <script>
