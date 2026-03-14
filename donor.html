@@ -715,22 +715,7 @@
   pt.position.set(0,0,8);
   scene.add(pt);
 
-  // ── Earth-like Sphere ──
-  const sphereGeo = new THREE.SphereGeometry(4.5, 64, 64);
-  const sphereMat = new THREE.MeshStandardMaterial({
-    color: 0x059669, roughness: 0.4, metalness: 0.2,
-    wireframe: false
-  });
-  const sphere = new THREE.Mesh(sphereGeo, sphereMat);
-  sphere.position.set(7, -3, -8);
-  scene.add(sphere);
 
-  // Wireframe overlay on sphere
-  const wireGeo = new THREE.SphereGeometry(4.55, 32, 32);
-  const wireMat = new THREE.MeshBasicMaterial({color:0x34d399, wireframe:true, transparent:true, opacity:0.18});
-  const wire = new THREE.Mesh(wireGeo, wireMat);
-  wire.position.copy(sphere.position);
-  scene.add(wire);
 
   // ── Torus Ring ──
   const torusGeo = new THREE.TorusGeometry(3, 0.18, 16, 120);
@@ -799,9 +784,7 @@
     requestAnimationFrame(animate);
     t += 0.01;
 
-    // Sphere slow rotation
-    sphere.rotation.y += 0.003;
-    wire.rotation.y += 0.003;
+    // Slow rotation
     torus.rotation.z += 0.005;
     torus2.rotation.y += 0.004;
 
