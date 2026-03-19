@@ -257,10 +257,12 @@
       <div class="footer-newsletter">
         <h4 class="footer-heading">Stay Updated</h4>
         <p>Get the latest impact reports and volunteer opportunities in your area.</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="your@email.com" required>
-          <button type="submit" class="btn btn-primary">Go →</button>
+        <form class="newsletter-form" id="newsletter-form">
+          <input type="email" id="newsletter-email" placeholder="your@email.com" required>
+          <button type="submit" class="btn btn-primary" id="newsletter-btn">Go →</button>
         </form>
+        <div id="newsletter-success" style="display:none; color: #10b981; font-weight: bold; margin-top: 10px; font-size: 0.9rem;">Thank you for subscribing!</div>
+        <div id="newsletter-error" style="display:none; color: #ef4444; font-weight: bold; margin-top: 10px; font-size: 0.9rem;">Error. Please try again.</div>
       </div>
     </div>
     
@@ -324,6 +326,47 @@
              pill.classList.remove('active');
           }
         });
+      });
+    }
+
+    // Newsletter api submission
+    const newsletterForm = document.getElementById('newsletter-form');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('newsletter-email');
+        const btn = document.getElementById('newsletter-btn');
+        const successMsg = document.getElementById('newsletter-success');
+        const errorMsg = document.getElementById('newsletter-error');
+        
+        const email = emailInput.value.trim();
+        if (!email) return;
+
+        btn.disabled = true;
+        btn.textContent = '...';
+        successMsg.style.display = 'none';
+        errorMsg.style.display = 'none';
+
+        try {
+          const res = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+          const data = await res.json();
+          if (res.ok && data.success) {
+            successMsg.style.display = 'block';
+            emailInput.value = '';
+          } else {
+            errorMsg.textContent = data.message || 'Error occurred';
+            errorMsg.style.display = 'block';
+          }
+        } catch (err) {
+          errorMsg.textContent = 'Failed to connect. Try again.';
+          errorMsg.style.display = 'block';
+        }
+        btn.disabled = false;
+        btn.textContent = 'Go →';
       });
     }
 

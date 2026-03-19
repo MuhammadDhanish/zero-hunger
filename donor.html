@@ -720,7 +720,7 @@ function buildSummary(){
 }
 
 // ── Submit ──
-document.getElementById('donor-form').addEventListener('submit',function(e){
+document.getElementById('donor-form').addEventListener('submit', async function(e){
   e.preventDefault();
   if(!document.getElementById('agree').checked){
     alert('Please agree to the Terms of Service to proceed.');
@@ -728,14 +728,52 @@ document.getElementById('donor-form').addEventListener('submit',function(e){
   }
   const btn=document.getElementById('submit-btn');
   btn.textContent='Processing…';btn.disabled=true;
-  setTimeout(()=>{
-    document.getElementById('donor-form').style.display='none';
-    document.querySelector('.steps-indicator').style.display='none';
-    document.querySelector('.form-header').style.display='none';
-    document.getElementById('success-panel').style.display='block';
-    const ref='ZHC-2026-'+Math.floor(10000+Math.random()*90000);
-    document.getElementById('ref-num').textContent=ref;
-  },1800);
+  
+  try {
+    const payload = {
+      firstName: document.getElementById('fname').value,
+      lastName: document.getElementById('lname').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      organization: document.getElementById('org').value,
+      city: document.getElementById('city').value,
+      state: document.getElementById('state').value,
+      panNumber: document.getElementById('pan').value,
+      amount: getAmount(),
+      donationType: donationType,
+      category: document.getElementById('category').value,
+      paymentMethod: document.getElementById('payment').value,
+      dedication: document.getElementById('dedication').value,
+      message: document.getElementById('message').value,
+      wantsTaxCert: document.getElementById('tax-cert').checked,
+      wantsUpdates: document.getElementById('updates').checked,
+      publicWall: document.getElementById('wall').checked
+    };
+
+    const res = await fetch('/api/donate', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+    const data = await res.json();
+    
+    if (res.ok && data.success) {
+      document.getElementById('donor-form').style.display='none';
+      document.querySelector('.steps-indicator').style.display='none';
+      document.querySelector('.form-header').style.display='none';
+      document.getElementById('success-panel').style.display='block';
+      document.getElementById('ref-num').textContent = data.referenceNumber || 'ZHC-2026-OK';
+    } else {
+      alert('Registration Failed: ' + data.message);
+      btn.textContent='💛 Complete Donation';
+      btn.disabled=false;
+    }
+  } catch (err) {
+    console.error(err);
+    alert('Failed to connect to the server. Please try again later.');
+    btn.textContent='💛 Complete Donation';
+    btn.disabled=false;
+  }
 });
 
 function resetForm(){
