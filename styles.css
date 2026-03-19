@@ -723,18 +723,21 @@ body::before {
     padding-left: 1rem;
   }
   .timeline-progress-wrap {
-    left: 2rem;
+    left: calc(1rem + 60px); /* 1rem padding of container + half of 120px pill width */
   }
   .timeline-body {
     width: 100%;
     text-align: left !important;
-    padding: 2.5rem 0 4rem 3rem;
+    padding: 2.5rem 1rem 4rem 3.5rem;
   }
   .timeline-step {
     align-items: flex-start;
   }
   .timeline-pill {
-    margin-left: -0.75rem;
+    width: 120px;
+    text-align: center;
+    padding: 0.5rem 0; /* Override desktop padding to respect strict width */
+    margin-left: 0;
     align-self: flex-start;
   }
 }
