@@ -475,7 +475,7 @@
             <input type="number" id="custom-amount" placeholder="Enter amount in ₹" min="100"/>
           </div>
 
-          <div class="field-row">
+          <div class="field-row full">
             <div class="field">
               <label>Donation Category</label>
               <select id="category">
@@ -484,16 +484,6 @@
                 <option>Cold Chain Logistics</option>
                 <option>Technology & Platform</option>
                 <option>Where Needed Most</option>
-              </select>
-            </div>
-            <div class="field">
-              <label>Payment Method</label>
-              <select id="payment">
-                <option>UPI / GPay / PhonePe</option>
-                <option>Credit / Debit Card</option>
-                <option>Net Banking</option>
-                <option>Bank Transfer (NEFT)</option>
-                <option>Cheque</option>
               </select>
             </div>
           </div>
@@ -687,11 +677,11 @@ function buildSummary(){
   const phone=document.getElementById('phone').value;
   const city=document.getElementById('city').value;
   const state=document.getElementById('state').value;
-  const org=document.getElementById('org').value;
-  const pan=document.getElementById('pan').value;
+  const org=document.getElementById('org') ? document.getElementById('org').value : '';
+  const pan=document.getElementById('pan') ? document.getElementById('pan').value : '';
   const amt=getAmount();
-  const cat=document.getElementById('category').value;
-  const pay=document.getElementById('payment').value;
+  const cat=document.getElementById('category') ? document.getElementById('category').value : '';
+  const pay=document.getElementById('payment') ? document.getElementById('payment').value : '';
   const ded=document.getElementById('dedication').value;
   const msg=document.getElementById('message').value;
   const freq={'one-time':'One-Time','monthly':'Monthly','annual':'Annual'}[donationType];
@@ -708,12 +698,12 @@ function buildSummary(){
       <tr><td colspan="2"><hr style="border:none;border-top:1px solid rgba(52,211,153,.15);margin:.6rem 0"/></td></tr>
       <tr><td style="padding:.35rem 0;color:rgba(255,255,255,.45)">Amount</td><td style="padding:.35rem 0;font-family:'Poppins',sans-serif;font-weight:800;color:var(--gold-l);font-size:1.1rem">₹${parseInt(amt).toLocaleString('en-IN')} <span style="font-size:.75rem;font-weight:500;opacity:.7">(${freq})</span></td></tr>
       <tr><td style="padding:.35rem 0;color:rgba(255,255,255,.45)">Allocated to</td><td style="padding:.35rem 0">${cat}</td></tr>
-      <tr><td style="padding:.35rem 0;color:rgba(255,255,255,.45)">Payment via</td><td style="padding:.35rem 0">${pay}</td></tr>
+      ${pay?`<tr><td style="padding:.35rem 0;color:rgba(255,255,255,.45)">Payment via</td><td style="padding:.35rem 0">${pay}</td></tr>`:''}
       ${ded?`<tr><td style="padding:.35rem 0;color:rgba(255,255,255,.45)">Dedication</td><td style="padding:.35rem 0;font-style:italic">${ded}</td></tr>`:''}
       ${msg?`<tr><td style="padding:.35rem 0;color:rgba(255,255,255,.45)">Message</td><td style="padding:.35rem 0;font-style:italic">${msg}</td></tr>`:''}
     </table>
   `;
-}www
+}
 
 
 // ── Submit ──
@@ -735,11 +725,11 @@ document.getElementById('donor-form').addEventListener('submit', async function(
       organization: document.getElementById('org').value,
       city: document.getElementById('city').value,
       state: document.getElementById('state').value,
-      panNumber: document.getElementById('pan').value,
+      panNumber: document.getElementById('pan') ? document.getElementById('pan').value : '',
       amount: getAmount(),
       donationType: donationType,
-      category: document.getElementById('category').value,
-      paymentMethod: document.getElementById('payment').value,
+      category: document.getElementById('category') ? document.getElementById('category').value : '',
+      paymentMethod: document.getElementById('payment') ? document.getElementById('payment').value : '',
       dedication: document.getElementById('dedication').value,
       message: document.getElementById('message').value,
       wantsTaxCert: document.getElementById('tax-cert').checked,

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | Zero Hunger Connection</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    :root{
+      /* ── Gold & Black Palette ── */
+      --gold-700:#b45309;--gold-600:#d97706;--gold-500:#f59e0b;--gold-400:#fbbf24;--gold-300:#fcd34d;--gold-100:#fef3c7;--gold-50:#fffbeb;
+      --black-950:#050505;--black-900:#0a0a0a;--black-800:#111111;--black-700:#1a1a1a;--black-600:#222222;--black-500:#2a2a2a;
+      --black-400:#3a3a3a;--black-300:#555555;--black-200:#888888;--black-100:#aaaaaa;
+      --white:#ffffff;
+      --radius:14px;--radius-full:999px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(155deg, #050505 0%, #0a0a0a 50%, #111111 100%);
+      color:var(--white);min-height:100vh;display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden;
+    }
+
+    /* Ambient Background Orbs */
+    .bg-orb{
+      position:absolute;border-radius:50%;filter:blur(80px);z-index:0;opacity:0.15;
+      animation:floatOrb 15s ease-in-out infinite alternate;
+    }
+    .orb-1{top:-10%;left:-5%;width:400px;height:400px;background:var(--gold-500);}
+    .orb-2{bottom:-15%;right:-10%;width:500px;height:500px;background:var(--gold-700);animation-delay:-5s;}
+    @keyframes floatOrb{0%{transform:translate(0,0)}100%{transform:translate(40px,-40px)}}
+
+    /* Back Link */
+    .back-nav{position:absolute;top:2.5rem;left:2.5rem;z-index:10;}
+    .back-nav a{
+      display:inline-flex;align-items:center;gap:.5rem;color:var(--gold-400);text-decoration:none;
+      font-size:.9rem;font-weight:600;background:rgba(245,158,11,.1);padding:.6rem 1.25rem;
+      border:1px solid rgba(245,158,11,.2);border-radius:var(--radius-full);transition:all .25s;
+    }
+    .back-nav a:hover{background:var(--gold-500);color:var(--black-900);transform:translateX(-4px);}
+
+    /* Login Card */
+    .login-container{
+      width:100%;max-width:440px;margin:0 1.5rem;position:relative;z-index:10;
+      animation:slideUp .6s cubic-bezier(.34,1.56,.64,1) both;
+    }
+    @keyframes slideUp{from{opacity:0;transform:translateY(30px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+
+    .login-box{
+      background:rgba(17,17,17,.8);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);
+      border:1px solid rgba(245,158,11,.2);border-radius:24px;padding:3rem 2.5rem;
+      box-shadow:0 24px 64px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.05) inset;
+    }
+
+    .brand{text-align:center;margin-bottom:2.5rem;}
+    .brand-icon{display:inline-block;font-size:2.5rem;margin-bottom:.5rem;animation:bounce 2s ease infinite;}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translateY(0)}40%{transform:translateY(-10px)}60%{transform:translateY(-5px)}}
+    .brand h2{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.6rem;color:var(--white);}
+    .brand h2 span{color:var(--gold-400);}
+    .brand p{color:var(--black-100);font-size:.9rem;margin-top:.25rem;}
+
+    /* Forms & Floating Labels */
+    .input-group{position:relative;margin-bottom:1.75rem;}
+    .input-group input{
+      width:100%;background:rgba(10,10,10,.5);border:1.5px solid rgba(255,255,255,.1);
+      border-radius:var(--radius);padding:1rem 1.25rem;color:var(--white);font-size:1rem;font-family:'Inter',sans-serif;
+      transition:all .2s;outline:none;
+    }
+    .input-group label{
+      position:absolute;left:1.25rem;top:50%;transform:translateY(-50%);
+      color:var(--black-200);font-size:1rem;pointer-events:none;transition:all .2s;
+      background:transparent;padding:0 .25rem;
+    }
+    .input-group input:focus{border-color:var(--gold-500);background:rgba(20,20,20,.8);box-shadow:0 0 0 4px rgba(245,158,11,.15);}
+    
+    /* Floating Label Logic */
+    .input-group input:focus ~ label, .input-group input:not(:placeholder-shown) ~ label{
+      top:0;font-size:.75rem;font-weight:600;color:var(--gold-400);background:#141414;border-radius:4px;
+    }
+
+    /* Options Row */
+    .options-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;font-size:.85rem;}
+    .check-wrap{display:flex;align-items:center;gap:.5rem;cursor:pointer;color:var(--black-100);}
+    .check-wrap input{accent-color:var(--gold-500);width:16px;height:16px;cursor:pointer;}
+    .forgot-link{color:var(--gold-400);text-decoration:none;font-weight:600;transition:color .2s;}
+    .forgot-link:hover{color:var(--gold-300);text-decoration:underline;}
+
+    /* Submit Button */
+    .btn-submit{
+      width:100%;padding:1rem;border-radius:var(--radius-full);border:none;
+      background:linear-gradient(135deg,var(--gold-500),var(--gold-600));color:var(--black-900);
+      font-family:'Poppins',sans-serif;font-weight:800;font-size:1.05rem;cursor:pointer;
+      box-shadow:0 8px 24px rgba(245,158,11,.3);transition:all .3s,background-position .4s;
+      background-size:200% 100%;position:relative;overflow:hidden;
+    }
+    .btn-submit:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(245,158,11,.5);background-position:right center;}
+    .btn-submit:active{transform:translateY(1px);}
+    
+    /* Loading state */
+    .btn-loading{color:transparent !important;pointer-events:none;}
+    .btn-loading::after{
+      content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+      width:22px;height:22px;border:3px solid rgba(0,0,0,.2);border-top-color:var(--black-900);
+      border-radius:50%;animation:spin .8s linear infinite;
+    }
+    @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
+
+    /* Alt Signup */
+    .signup-link{text-align:center;margin-top:2rem;font-size:.9rem;color:var(--black-100);}
+    .signup-link a{color:var(--white);font-weight:700;text-decoration:none;margin-left:.25rem;border-bottom:1px solid transparent;transition:all .2s;}
+    .signup-link a:hover{color:var(--gold-400);border-bottom-color:var(--gold-400);}
+
+    /* Shake Error */
+    @keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+    .shake{animation:shake .4s ease-in-out;}
+    .error-msg{
+      color:#ef4444;font-size:.8rem;font-weight:600;text-align:center;
+      margin-top:-1rem;margin-bottom:1.25rem;display:none;
+    }
+
+    @media(max-width:480px){
+      .back-nav{top:1.5rem;left:1.5rem;}
+      .login-box{padding:2.5rem 1.5rem;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+
+  <div class="back-nav">
+    <a href="index.html">← Return Home</a>
+  </div>
+
+  <div class="login-container">
+    <div class="login-box" id="loginBox">
+      <div class="brand">
+        <span class="brand-icon">🌿</span>
+        <h2>Welcome <span>Back</span></h2>
+        <p>Sign in to your dashboard</p>
+      </div>
+
+      <div class="error-msg" id="errorMsg">Invalid email or password.</div>
+
+      <form id="loginForm" novalidate>
+        <div class="input-group">
+          <input type="email" id="email" placeholder=" " required />
+          <label for="email">Email Address</label>
+        </div>
+        
+        <div class="input-group">
+          <input type="password" id="password" placeholder=" " required />
+          <label for="password">Password</label>
+        </div>
+
+        <div class="options-row">
+          <label class="check-wrap">
+            <input type="checkbox" checked/> Remember me
+          </label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+
+        <button type="submit" class="btn-submit" id="submitBtn">Sign In</button>
+      </form>
+
+      <div class="signup-link">
+        New to the platform? <a href="donor.html">Create an account</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('loginForm');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const submitBtn = document.getElementById('submitBtn');
+    const loginBox = document.getElementById('loginBox');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Reset errors
+      errorMsg.style.display = 'none';
+      email.style.borderColor = 'rgba(255,255,255,.1)';
+      password.style.borderColor = 'rgba(255,255,255,.1)';
+      loginBox.classList.remove('shake');
+
+      let hasError = false;
+
+      if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+        email.style.borderColor = '#ef4444';
+        hasError = true;
+      }
+      if (!password.value || password.value.length < 3) {
+        password.style.borderColor = '#ef4444';
+        hasError = true;
+      }
+
+      if (hasError) {
+        // Trigger reflow for animation restart
+        void loginBox.offsetWidth;
+        loginBox.classList.add('shake');
+        errorMsg.textContent = 'Please enter valid credentials.';
+        errorMsg.style.display = 'block';
+        return;
+      }
+
+      // Simulate Authentication
+      submitBtn.classList.add('btn-loading');
+
+      setTimeout(() => {
+        // Simulate login success vs failure
+        if (email.value.includes('admin') || password.value === '12345') {
+          // Success
+          submitBtn.classList.remove('btn-loading');
+          submitBtn.style.background = '#10b981'; // green success
+          submitBtn.style.color = '#fff';
+          submitBtn.textContent = 'Authenticated!';
+          
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 800);
+        } else {
+          // Fake failure for interactivity
+          submitBtn.classList.remove('btn-loading');
+          void loginBox.offsetWidth;
+          loginBox.classList.add('shake');
+          errorMsg.textContent = 'Incorrect credentials. Try "admin" or password "12345".';
+          errorMsg.style.display = 'block';
+          email.style.borderColor = '#ef4444';
+          password.style.borderColor = '#ef4444';
+        }
+      }, 1200);
+    });
+
+    // Ripple effect on button
+    submitBtn.addEventListener('mousedown', function(e) {
+      if(this.classList.contains('btn-loading')) return;
+      const ripple = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size/2;
+      const y = e.clientY - rect.top - size/2;
+      
+      ripple.style.cssText = `
+        position: absolute;
+        width: ${size}px; height: ${size}px;
+        top: ${y}px; left: ${x}px;
+        background: rgba(255,255,255,.3);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: rippleAnim .6s linear;
+        pointer-events: none;
+      `;
+      this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+    
+    const style = document.createElement('style');
+    style.innerHTML = `@keyframes rippleAnim { to { transform: scale(4); opacity: 0; } }`;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>
