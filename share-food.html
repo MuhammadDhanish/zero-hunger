@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Volunteer Registration | Zero Hunger Connection</title>
+  <title>Food Rescue Registration | Zero Hunger Connection</title>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
   <style>
@@ -218,114 +218,119 @@
   <nav><div class="logo">🌿 Zero <span>Hunger</span> Connection</div><a href="index.html" class="back">← Back to Home</a></nav>
 
   <div class="hero-strip">
-    <div class="pill"><span class="pulse-dot"></span> Volunteer Portal</div>
-    <h1>Become a Volunteer.<br/>Make a Real Impact.</h1>
-    <p>Your time and energy are the driving force behind our mission — rescuing meals and delivering hope to communities in need.</p>
+    <div class="pill"><span class="pulse-dot"></span> Food Rescue Portal</div>
+    <h1>Share Surplus Food.<br/>Eliminate Waste.</h1>
+    <p>Every pristine, uneaten meal from your event, hotel, or restaurant can make a world of difference for someone in need.</p>
   </div>
 
   <div class="stats-row">
-    <div class="stat-chip"><span class="num">1,200+</span><span class="lbl">Active Volunteers</span></div>
-    <div class="stat-chip"><span class="num">50K+</span><span class="lbl">Meals Distributed</span></div>
-    <div class="stat-chip"><span class="num">30+</span><span class="lbl">Cities Covered</span></div>
+    <div class="stat-chip"><span class="num">250+</span><span class="lbl">Restaurant Partners</span></div>
+    <div class="stat-chip"><span class="num">2hrs</span><span class="lbl">Avg Pickup Time</span></div>
+    <div class="stat-chip"><span class="num">0</span><span class="lbl">Tolerated Food Waste</span></div>
   </div>
 
   <div class="main-grid">
     <div class="info-panel">
       <div class="info-card">
-        <h3><span class="icon">✨</span> Why Volunteer With Us</h3>
+        <h3><span class="icon">✨</span> Why Share Food With Us</h3>
         <div class="benefit-list">
-          <div class="benefit-item"><div class="benefit-icon">🤝</div><p><strong>Community Connection</strong> — Meet like-minded peers and build lifelong connections.</p></div>
-          <div class="benefit-item"><div class="benefit-icon">⚡</div><p><strong>Direct Impact</strong> — See the immediate result of your hard work safely feeding families.</p></div>
-          <div class="benefit-item"><div class="benefit-icon">🎓</div><p><strong>Skill Development</strong> — Gain real-world experience in logistics, event management, and more.</p></div>
-          <div class="benefit-item"><div class="benefit-icon">📜</div><p><strong>Certification</strong> — Receive an official volunteer certificate for your resume.</p></div>
+          <div class="benefit-item"><div class="benefit-icon">🚚</div><p><strong>Rapid Logistics</strong> — We guarantee pickup within hours so food stays fresh.</p></div>
+          <div class="benefit-item"><div class="benefit-icon">🛡️</div><p><strong>Safety Assured</strong> — Strict cold-chain logistics to maintain hygiene and safety.</p></div>
+          <div class="benefit-item"><div class="benefit-icon">📊</div><p><strong>Impact Tracking</strong> — Receive certificates and monthly badges detailing meals shared.</p></div>
+          <div class="benefit-item"><div class="benefit-icon">🌿</div><p><strong>Go Green</strong> — Actively reduce the carbon footprint created by unnecessary food waste.</p></div>
         </div>
       </div>
     </div>
 
     <div class="form-card">
       <div class="form-header">
-        <h2>Volunteer Registration</h2>
-        <p>Fill in your details to join our active volunteer network.</p>
+        <h2>Schedule a Pickup</h2>
+        <p>Log details of the surplus food to trigger a rapid response from our volunteer network.</p>
       </div>
 
       <div class="steps-indicator" id="steps-ind">
-        <div class="step-ind active" id="si-1"><div class="step-circle">1</div><span>Personal Info</span></div>
+        <div class="step-ind active" id="si-1"><div class="step-circle">1</div><span>Contact Info</span></div>
         <div class="step-line" id="sl-1"></div>
-        <div class="step-ind" id="si-2"><div class="step-circle">2</div><span>Availability</span></div>
+        <div class="step-ind" id="si-2"><div class="step-circle">2</div><span>Food Specs</span></div>
         <div class="step-line" id="sl-2"></div>
-        <div class="step-ind" id="si-3"><div class="step-circle">3</div><span>Confirm</span></div>
+        <div class="step-ind" id="si-3"><div class="step-circle">3</div><span>Location</span></div>
       </div>
 
-      <form id="volunteer-form" novalidate>
+      <form id="share-form" novalidate>
         <!-- STEP 1 -->
         <div class="form-section active" id="step1">
           <div class="field-row">
-            <div class="field"><label>First Name *</label><input type="text" id="fname" placeholder="e.g. Rajan" required/></div>
-            <div class="field"><label>Last Name *</label><input type="text" id="lname" placeholder="e.g. Mehta" required/></div>
+            <div class="field"><label>Business / Event Name *</label><input type="text" id="business" placeholder="e.g. Royal Wedding Hall" required/></div>
+            <div class="field"><label>Contact Person *</label><input type="text" id="contact" placeholder="e.g. Anil Kumar" required/></div>
           </div>
           <div class="field-row">
             <div class="field"><label>Email Address *</label><input type="email" id="email" placeholder="you@example.com" required/></div>
             <div class="field"><label>Phone Number *</label><input type="tel" id="phone" placeholder="+91 98765 43210" required/></div>
           </div>
-          <div class="field-row">
-            <div class="field"><label>City *</label><input type="text" id="city" placeholder="e.g. Mumbai" required/></div>
-            <div class="field"><label>Age *</label><input type="number" id="age" placeholder="e.g. 21" min="16" required/></div>
+          <div class="field">
+            <label>Provider Type</label>
+            <select id="type">
+              <option value="Restaurant / Cafe">Restaurant / Cafe</option>
+              <option value="Catering / Event">Catering / Event</option>
+              <option value="Supermarket">Supermarket</option>
+              <option value="Individual">Individual Donor</option>
+            </select>
           </div>
-          <div class="form-nav"><span></span><button type="button" class="btn btn-primary" onclick="nextStep(1)">Next: Availability →</button></div>
+          <div class="form-nav"><span></span><button type="button" class="btn btn-primary" onclick="nextStep(1)">Next: Food Details →</button></div>
         </div>
 
         <!-- STEP 2 -->
         <div class="form-section" id="step2">
-          <div class="field">
-            <label>Availability Type *</label>
-            <select id="availability" required>
-              <option value="">Select your availability</option>
-              <option value="Weekdays">Weekdays</option>
-              <option value="Weekends">Weekends Only</option>
-              <option value="Flexible">Flexible / Anytime</option>
-            </select>
+          <div class="field-row">
+            <div class="field">
+              <label>Food Category *</label>
+              <select id="category" required>
+                <option value="">Select Category</option>
+                <option value="Cooked Meals (Buffet surplus)">Cooked Meals (Buffet surplus)</option>
+                <option value="Packaged / Non-perishable">Packaged / Non-perishable</option>
+                <option value="Bakery / Breads">Bakery / Breads</option>
+                <option value="Fresh Produce">Fresh Produce</option>
+              </select>
+            </div>
+            <div class="field"><label>Est. Portions (approx meals) *</label><input type="number" id="portions" placeholder="e.g. 50" min="5" required/></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>Prepared At (Time)</label><input type="time" id="preparedTime"/></div>
+            <div class="field"><label>Safe to consume for (Hours)</label><input type="number" id="safeHours" placeholder="e.g. 4" min="1"/></div>
           </div>
           <div class="field">
-            <label>Area of Interest *</label>
-            <select id="interest" required>
-              <option value="">Select an area</option>
-              <option value="Food Rescue Operations">Food Rescue Operations</option>
-              <option value="Distribution & Logistics">Distribution & Logistics</option>
-              <option value="Community Outreach">Community Outreach</option>
-              <option value="Social Media & Tech">Social Media & Tech</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Vehicle Access?</label>
-            <select id="vehicle">
-              <option value="No">No vehicle access</option>
-              <option value="2-Wheeler">Yes, 2-Wheeler</option>
-              <option value="4-Wheeler">Yes, 4-Wheeler</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Why do you want to volunteer? (Optional)</label>
-            <textarea id="motivation" placeholder="Share your motivation with us..."></textarea>
+            <label>Dietary Labels & Ingredients</label>
+            <input type="text" id="diet" placeholder="e.g. Vegetarian, contains peanuts"/>
           </div>
           <div class="form-nav">
             <button type="button" class="btn btn-secondary" onclick="prevStep(2)">← Back</button>
-            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Review & Confirm →</button>
+            <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next: Location →</button>
           </div>
         </div>
 
         <!-- STEP 3 -->
         <div class="form-section" id="step3">
+          <div class="field">
+            <label>Complete Pickup Address *</label>
+            <textarea id="address" placeholder="123 Main St, Near Central Bank..." required></textarea>
+          </div>
+          <div class="field-row">
+            <div class="field"><label>City *</label><input type="text" id="city" placeholder="City" required/></div>
+            <div class="field"><label>Pincode *</label><input type="text" id="pin" placeholder="e.g. 110001" required/></div>
+          </div>
+          <div class="field">
+            <label>Handover Instructions to Driver</label>
+            <input type="text" id="instructions" placeholder="Ask for Anil at the back entrance..."/>
+          </div>
+
           <div id="summary-box"></div>
+          
           <div class="check-field">
             <input type="checkbox" id="agree" required/>
-            <label for="agree">I agree to Zero Hunger Connection's <a href="#">Volunteer Guidelines</a> and <a href="#">Safety Policy</a>.</label>
-          </div>
-          <div class="check-field">
-            <input type="checkbox" id="updates" checked/>
-            <label for="updates">Send me SMS/Email alerts for urgent nearby food pickups.</label>
+            <label for="agree">I confirm this food is untouched by guests and safe for human consumption.</label>
           </div>
           <div style="margin-top:1.5rem">
-            <button type="submit" class="btn btn-gold" id="submit-btn">🤝 Submit Application</button>
+            <button type="submit" class="btn btn-gold" id="submit-btn">🚚 Request Immediate Pickup</button>
           </div>
           <div class="form-nav" style="margin-top:1rem;justify-content:flex-start">
             <button type="button" class="btn btn-secondary" onclick="prevStep(3)">← Edit Details</button>
@@ -335,10 +340,10 @@
 
       <!-- SUCCESS -->
       <div class="success-panel" id="success-panel">
-        <div class="s-icon">🎉</div>
-        <h2>Welcome to the Team!</h2>
-        <p>Your volunteer application has been submitted successfully. Our team will review your profile and reach out via email within 48 hours for orientation details.</p>
-        <div class="ref" id="ref-num">VOL-2026-XXXXX</div>
+        <div class="s-icon">🚚</div>
+        <h2>Request Broadcasted!</h2>
+        <p>A volunteer is successfully being matched to your location. You will receive an SMS via our tracking system momentarily with the driver's contact.</p>
+        <div class="ref" id="ref-num">REQ-2026-XXXXX</div>
         <button class="btn btn-primary" onclick="window.location.href='index.html'">← Return to Home</button>
       </div>
     </div>
@@ -378,34 +383,32 @@ function setStep(n){
 
 function validateStep(n){
   if(n===1){
-    const req=['fname','lname','email','phone','city','age'];
+    const req=['business','contact','email','phone'];
     for(const id of req){
       const el=document.getElementById(id);
       if(!el.value.trim()){ el.focus(); alert('Please fill required fields.'); return false; }
     }
   }
   if(n===2){
-    const req=['availability','interest'];
+    const req=['category','portions'];
     for(const id of req){
       const el=document.getElementById(id);
-      if(!el.value.trim()){ el.focus(); alert('Please make a selection.'); return false; }
+      if(!el.value.trim()){ el.focus(); alert('Please enter food details.'); return false; }
     }
+  }
+  if(n===3 && false){ // address checked inside submit or pre-submit
   }
   return true;
 }
 
 function buildSummary(){
   const data = {
-    Name: document.getElementById('fname').value + ' ' + document.getElementById('lname').value,
-    Email: document.getElementById('email').value,
-    Phone: document.getElementById('phone').value,
-    Location: document.getElementById('city').value,
-    Age: document.getElementById('age').value,
-    Availability: document.getElementById('availability').value,
-    Interest: document.getElementById('interest').value,
-    Vehicle: document.getElementById('vehicle').value
+    Provider: document.getElementById('business').value + ' (' + document.getElementById('contact').value + ')',
+    Category: document.getElementById('category').value,
+    Portions: document.getElementById('portions').value + ' Meals',
+    Dietary: document.getElementById('diet').value || 'N/A'
   };
-  let html=`<p style="font-family:'Poppins',sans-serif;font-weight:700;color:var(--gold-400);margin-bottom:1rem;font-size:.95rem;">📋 Application Summary</p><table style="width:100%;font-size:.88rem;">`;
+  let html=`<p style="font-family:'Poppins',sans-serif;font-weight:700;color:var(--gold-400);margin-bottom:1rem;font-size:.95rem;">📋 Pickup Summary</p><table style="width:100%;font-size:.88rem;">`;
   for(const [k,v] of Object.entries(data)){
     html+=`<tr><td style="padding:.35rem 0;color:rgba(255,255,255,.45);width:40%">${k}</td><td style="padding:.35rem 0;color:var(--white);font-weight:500">${v}</td></tr>`;
   }
@@ -413,18 +416,24 @@ function buildSummary(){
   document.getElementById('summary-box').innerHTML=html;
 }
 
-document.getElementById('volunteer-form').addEventListener('submit', function(e){
+document.getElementById('share-form').addEventListener('submit', function(e){
   e.preventDefault();
-  if(!document.getElementById('agree').checked){ alert('Please agree to guidelines.'); return; }
+  const req=['address','city','pin'];
+  for(const id of req){
+    const el=document.getElementById(id);
+    if(!el.value.trim()){ el.focus(); alert('Please provide the full pickup address.'); return; }
+  }
+  if(!document.getElementById('agree').checked){ alert('Please confirm food safety.'); return; }
+  
   const btn=document.getElementById('submit-btn');
-  btn.textContent='Processing...'; btn.disabled=true;
+  btn.textContent='Matching Volunteer...'; btn.disabled=true;
   setTimeout(()=>{
-    document.getElementById('volunteer-form').style.display='none';
+    document.getElementById('share-form').style.display='none';
     document.querySelector('.steps-indicator').style.display='none';
     document.querySelector('.form-header').style.display='none';
     document.getElementById('success-panel').style.display='block';
-    document.getElementById('ref-num').textContent = 'VOL-2026-' + Math.floor(10000+Math.random()*90000);
-  }, 1000);
+    document.getElementById('ref-num').textContent = 'REQ-2026-' + Math.floor(10000+Math.random()*90000);
+  }, 1200);
 });
 </script>
 </body>
